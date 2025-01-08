@@ -2,18 +2,15 @@ import streamlit as st
 from ultralytics import YOLO
 import cv2
 import time
-import pygame  # Import pygame untuk kontrol suara
+import pygame
 
-# Inisialisasi pygame mixer untuk audio
 pygame.mixer.init()
 
-# Fungsi untuk mendeteksi dan mengklasifikasikan objek
 def detect_and_classify(frame, yolo_model):
     global alert_playing
 
     yolo_results = yolo_model(frame)
 
-    # Status deteksi MicroSleep
     micro_sleep_detected = False
 
     for r in yolo_results:
@@ -36,8 +33,8 @@ def detect_and_classify(frame, yolo_model):
                 micro_sleep_detected = True
                 if not alert_playing:
                     # Jika MicroSleep terdeteksi dan suara belum dimainkan, putar suara
-                    pygame.mixer.music.load('alert_sound.mp3')  # Pastikan file audio benar
-                    pygame.mixer.music.play(-1)  # Memutar suara secara loop
+                    pygame.mixer.music.load('alert_sound.mp3')
+                    pygame.mixer.music.play(-1)
                     alert_playing = True
             else:
                 color = (255, 255, 255)  # Putih untuk kelas lain
@@ -49,7 +46,7 @@ def detect_and_classify(frame, yolo_model):
 
     # Jika MicroSleep tidak terdeteksi lagi, berhenti memainkan suara
     if not micro_sleep_detected and alert_playing:
-        pygame.mixer.music.stop()  # Berhenti memainkan suara
+        pygame.mixer.music.stop()
         alert_playing = False
 
     return frame
