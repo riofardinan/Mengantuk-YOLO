@@ -1,9 +1,7 @@
 import streamlit as st
 
-# Judul utama
 st.title(" Welcome to Drowsiness Detection App! 🚗💤")
 
-# Deskripsi utama
 st.markdown("""
 Selamat datang di **Aplikasi Deteksi Mengantuk**! 👋  
 Aplikasi ini dirancang untuk mendeteksi tanda-tanda mengantuk pada pengemudi secara **real-time** menggunakan **YOLOv8**, model deteksi objek berbasis AI yang canggih. 🧠🤖  
@@ -41,5 +39,4 @@ st.markdown("""
 - 💻 **User-Friendly Interface:** Mudah digunakan oleh siapa saja tanpa memerlukan pengetahuan teknis.  
 """)
 
-# Caption tambahan
 st.caption("🛡️ Selalu utamakan keselamatan dalam berkendara. Jangan ragu untuk menggunakan aplikasi ini sebagai asisten Anda!")
